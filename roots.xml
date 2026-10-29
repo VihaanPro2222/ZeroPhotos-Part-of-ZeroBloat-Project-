@@ -1,0 +1,8 @@
+<linker>
+  <!-- Protect all COM interop definitions and custom controls inside ZeroPhotos -->
+  <assembly fullname="ZeroPhotos" preserve="all" />
+
+  <!-- Protect Windows Forms and Drawing reflection points -->
+  <assembly fullname="System.Windows.Forms" preserve="all" />
+  <assembly fullname="System.Drawing.Common" preserve="all" />
+</linker>
