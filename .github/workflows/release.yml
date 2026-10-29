@@ -1,7 +1,7 @@
 name: Build & Release Standalone ZeroPhotos
 
 on:
-  workflow_dispatch: # Lets you trigger the build with one click
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -21,7 +21,7 @@ jobs:
 
       - name: Compile Self-Contained Trimmed Single File
         run: |
-          dotnet publish -c Release -r win-x64 -p:PublishTrimmed=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o ./publish-output
+          dotnet publish -c Release -r win-x64 --self-contained true -p:PublishTrimmed=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o ./publish-output
 
       - name: Zip Executable
         shell: pwsh
