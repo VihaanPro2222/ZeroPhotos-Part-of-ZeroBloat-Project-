@@ -894,7 +894,7 @@ namespace ZeroPhotos
 
             _graph.RenderFile(path, null);
 
-            _window.put_Owner(hostHwnd);
+            _window.put_Owner(hostHwnd.ToInt32());
             _window.put_WindowStyle(0x40000000 | 0x10000000); // WS_CHILD | WS_VISIBLE
             _window.SetWindowPosition(0, 0, width, height);
         }
@@ -944,7 +944,7 @@ namespace ZeroPhotos
         [ComImport, Guid("56A868B4-0AD4-11CE-B03A-0020AF0BA770"), InterfaceType(ComInterfaceType.InterfaceIsDual)]
         private interface IVideoWindow
         {
-            void put_Owner(IntPtr Owner);
+            void put_Owner(Int Owner);
             void put_WindowStyle(int WindowStyle);
             void SetWindowPosition(int Left, int Top, int Width, int Height);
             void put_Visible(int Visible);
