@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    
+    <!-- Native AOT Compilation -->
+   <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>false</SelfContained>
+    
+    <!-- FIX: Force compiler to allow WinForms trimming -->
+    <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
+    <NoWarn>$(NoWarn);NETSDK1175;IL2026;IL2091</NoWarn>
+  </PropertyGroup>
+</Project>
