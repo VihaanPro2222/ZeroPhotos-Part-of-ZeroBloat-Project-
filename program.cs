@@ -65,6 +65,11 @@ namespace ZeroPhotos
             this.BackColor = Color.FromArgb(14, 14, 16);
             this.ForeColor = Color.White;
             this.KeyPreview = true;
+	    this.FormClosing += (s, e) =>
+{
+    _scanCts?.Cancel();
+    _viewer.StopMediaPlayback();
+};
 
             int dark = 1;
             DwmSetWindowAttribute(this.Handle, 20, ref dark, sizeof(int));
