@@ -7,8 +7,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     
     <!-- Native AOT Compilation -->
-   <PublishSingleFile>true</PublishSingleFile>
-    <SelfContained>false</SelfContained>
+    <PublishAot>true</PublishAot>
+    <OptimizationPreference>Size</OptimizationPreference>
+    <TrimMode>partial</TrimMode> 
     
     <!-- FIX: Force compiler to allow WinForms trimming -->
     <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
