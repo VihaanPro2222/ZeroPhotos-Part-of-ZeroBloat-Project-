@@ -19,9 +19,9 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Compile Self-Contained Trimmed Single File
+      - name: Compile Self-Contained Compressed Single File
         run: |
-          dotnet publish -c Release -r win-x64 --self-contained true -p:PublishTrimmed=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o ./publish-output
+          dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o ./publish-output
 
       - name: Zip Executable
         shell: pwsh
