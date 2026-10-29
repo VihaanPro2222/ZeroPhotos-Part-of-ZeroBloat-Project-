@@ -1,18 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
-    <UseWindowsForms>true</UseWindowsForms>
     <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    
-    <!-- Native AOT Compilation -->
-    <PublishAot>true</PublishAot>
-    <OptimizationPreference>Size</OptimizationPreference>
-    <TrimMode>partial</TrimMode> 
-    
-    <!-- FIX: Force compiler to allow WinForms trimming -->
-    <_SuppressWinFormsTrimError>true</_SuppressWinFormsTrimError>
-    <NoWarn>$(NoWarn);NETSDK1175;IL2026;IL2091</NoWarn>
+
+    <!-- Packaging: Single-File + Compression (NO Trimming) -->
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+
+    <!-- Strip unused runtime extras safely -->
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <DebuggerSupport>false</DebuggerSupport>
+    <StackTraceSupport>false</StackTraceSupport>
   </PropertyGroup>
+
 </Project>
