@@ -944,7 +944,7 @@ namespace ZeroPhotos
         [ComImport, Guid("56A868B4-0AD4-11CE-B03A-0020AF0BA770"), InterfaceType(ComInterfaceType.InterfaceIsDual)]
         private interface IVideoWindow
         {
-            void put_Owner(Int Owner);
+            void put_Owner(int Owner);
             void put_WindowStyle(int WindowStyle);
             void SetWindowPosition(int Left, int Top, int Width, int Height);
             void put_Visible(int Visible);
