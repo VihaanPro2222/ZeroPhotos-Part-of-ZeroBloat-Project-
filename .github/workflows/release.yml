@@ -1,0 +1,41 @@
+name: Build & Release Standalone ZeroPhotos
+
+on:
+  workflow_dispatch: # Lets you trigger the build with one click
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Compile Self-Contained Trimmed Single File
+        run: |
+          dotnet publish -c Release -r win-x64 -p:PublishTrimmed=true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o ./publish-output
+
+      - name: Zip Executable
+        shell: pwsh
+        run: |
+          Compress-Archive -Path ./publish-output/zerophotos.exe -DestinationPath ./ZeroPhotos-win-x64.zip
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            ./ZeroPhotos-win-x64.zip
+            ./publish-output/zerophotos.exe
+          tag_name: v1.0.0
+          name: ZeroPhotos v1.0.0
+          draft: false
+          prerelease: false
+          generate_release_notes: true
